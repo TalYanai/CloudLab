@@ -41,14 +41,12 @@ jobs:
     - name: Deploy to Azure Container Instance
       run: |
         az container create \
-          --resource-group CLOUDLAB-DEV-RG \
-          --name contacts-container \
-          --image cloudlabacr11103.azurecr.io/phonebook-app:latest \
-          --dns-name-label contacts-lab-${{ github.run_number }} \
-          --ports 80 \
-          --registry-login-server cloudlabacr11103.azurecr.io \
+          --name ${{ secrets.ACI_NAME }} \
+          --resource-group ${{ secrets.ACI_RG }} \
+          --image ${{ secrets.ACR_NAME }}.azurecr.io/phonebook-app:latest \
+          --registry-login-server ${{ secrets.ACR_NAME }}.azurecr.io \
           --registry-username ${{ secrets.ACR_USERNAME }} \
           --registry-password ${{ secrets.ACR_PASSWORD }} \
-          --location westeurope \
-          --restart-policy OnFailure
-# minor change to trigger push
+          --location ${{ secrets.ACI_LOCATION }} \
+          --dns-name-label cloudlab-${{ github.run_number }} \
+          --ports 80
