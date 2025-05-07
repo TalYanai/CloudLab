@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+  workflow_dispatch:
 
 jobs:
   build-and-push:
@@ -16,17 +17,17 @@ jobs:
       - name: Log in to Azure Container Registry
         uses: azure/docker-login@v1
         with:
-          login-server: cloudlabacr11103.azurecr.io
+          login-server: ${{ secrets.ACR_NAME }}.azurecr.io
           username: ${{ secrets.ACR_USERNAME }}
           password: ${{ secrets.ACR_PASSWORD }}
 
       - name: Build the Docker image
         run: |
-          docker build -t cloudlabacr11103.azurecr.io/phonebook-app:latest ./Contacts
+          docker build -t ${{ secrets.ACR_NAME }}.azurecr.io/phonebook-app:latest ./Contacts
 
       - name: Push the Docker image
         run: |
-          docker push cloudlabacr11103.azurecr.io/phonebook-app:latest
+          docker push ${{ secrets.ACR_NAME }}.azurecr.io/phonebook-app:latest
 
   deploy-to-aci:
     needs: build-and-push
@@ -39,7 +40,7 @@ jobs:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
 
       - name: Debug ACI_NAME
-        run: echo "ACI_NAME is: ${{ secrets.ACI_NAME }}"
+        run: echo "ACI_NAME is ${{ secrets.ACI_NAME }}"
 
       - name: Deploy to Azure Container Instance
         run: |
@@ -54,4 +55,3 @@ jobs:
             --dns-name-label cloudlab-${{ github.run_number }} \
             --ports 80 \
             --os-type Linux
-      
