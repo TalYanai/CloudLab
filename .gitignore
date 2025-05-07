@@ -1,0 +1,4 @@
+﻿.terraform/
+terraform.exe
+*.exe
+Microsoft VS Code/

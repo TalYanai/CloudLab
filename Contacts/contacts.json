@@ -1,0 +1,156 @@
+[
+  {
+    "name": "Tal",
+    "phone": "0508887028",
+    "email": "talyanai012@gmail.com",
+    "address": "Tel Aviv",
+    "partner_name": "Shahar"
+  },
+  {
+    "name": "Uri",
+    "phone": "0544400404",
+    "email": "uri@walla,com",
+    "address": "Tel Aviv",
+    "partner_name": "Yarden"
+  },
+  {
+    "name": "Alice Green",
+    "phone": "050-1111111",
+    "email": "alice@example.com",
+    "address": "Haifa",
+    "partner_name": null
+  },
+  {
+    "name": "Bob Blue",
+    "phone": "050-2222222",
+    "email": "bob@example.com",
+    "address": "Jerusalem",
+    "partner_name": null
+  },
+  {
+    "name": "Charlie Red",
+    "phone": "050-3333333",
+    "email": "charlie@example.com",
+    "address": "Tel Aviv",
+    "partner_name": null
+  },
+  {
+    "name": "Dana White",
+    "phone": "050-4444444",
+    "email": "dana@example.com",
+    "address": "Ashdod",
+    "partner_name": "Eli"
+  },
+  {
+    "name": "Eli Black",
+    "phone": "050-5555555",
+    "email": "eli@example.com",
+    "address": "Ashdod",
+    "partner_name": "Dana"
+  },
+  {
+    "name": "Fay Silver",
+    "phone": "050-6666666",
+    "email": "fay@example.com",
+    "address": "Eilat",
+    "partner_name": null
+  },
+  {
+    "name": "Gabe Gold",
+    "phone": "050-7777777",
+    "email": "gabe@example.com",
+    "address": "Be'er Sheva",
+    "partner_name": null
+  },
+  {
+    "name": "Hila Pink",
+    "phone": "050-8888888",
+    "email": "hila@example.com",
+    "address": "Netanya",
+    "partner_name": null
+  },
+  {
+    "name": "Itai Gray",
+    "phone": "050-9999999",
+    "email": "itai@example.com",
+    "address": "Kiryat Shmona",
+    "partner_name": null
+  },
+  {
+    "name": "Jack Orange",
+    "phone": "050-0000000",
+    "email": "jack@example.com",
+    "address": "Ramat Gan",
+    "partner_name": null
+  },
+  {
+    "name": "Alice Green",
+    "phone": "050-1111111",
+    "email": "alice@example.com",
+    "address": "Haifa",
+    "partner_name": null
+  },
+  {
+    "name": "Bob Blue",
+    "phone": "050-2222222",
+    "email": "bob@example.com",
+    "address": "Jerusalem",
+    "partner_name": null
+  },
+  {
+    "name": "Charlie Red",
+    "phone": "050-3333333",
+    "email": "charlie@example.com",
+    "address": "Tel Aviv",
+    "partner_name": null
+  },
+  {
+    "name": "Dana White",
+    "phone": "050-4444444",
+    "email": "dana@example.com",
+    "address": "Ashdod",
+    "partner_name": "Eli"
+  },
+  {
+    "name": "Eli Black",
+    "phone": "050-5555555",
+    "email": "eli@example.com",
+    "address": "Ashdod",
+    "partner_name": "Dana"
+  },
+  {
+    "name": "Fay Silver",
+    "phone": "050-6666666",
+    "email": "fay@example.com",
+    "address": "Eilat",
+    "partner_name": null
+  },
+  {
+    "name": "Gabe Gold",
+    "phone": "050-7777777",
+    "email": "gabe@example.com",
+    "address": "Be'er Sheva",
+    "partner_name": null
+  },
+  {
+    "name": "Hila Pink",
+    "phone": "050-8888888",
+    "email": "hila@example.com",
+    "address": "Netanya",
+    "partner_name": null
+  },
+  {
+    "name": "Itai Gray",
+    "phone": "050-9999999",
+    "email": "itai@example.com",
+    "address": "Kiryat Shmona",
+    "partner_name": null
+  },
+  {
+    "name": "Jack Orange",
+    "phone": "050-0000000",
+    "email": "jack@example.com",
+    "address": "Ramat Gan",
+    "partner_name": null
+  }
+]

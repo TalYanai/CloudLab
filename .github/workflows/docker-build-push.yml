@@ -1,0 +1,54 @@
+name: Build and Deploy to ACI
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Log in to Azure Container Registry
+      uses: azure/docker-login@v1
+      with:
+        login-server: cloudlabacr11103.azurecr.io
+        username: ${{ secrets.ACR_USERNAME }}
+        password: ${{ secrets.ACR_PASSWORD }}
+
+    - name: Build the Docker image
+      run: |
+        docker build -t cloudlabacr11103.azurecr.io/phonebook-app:latest ./Contacts
+
+    - name: Push the Docker image
+      run: |
+        docker push cloudlabacr11103.azurecr.io/phonebook-app:latest
+
+  deploy-to-aci:
+    needs: build-and-push
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Azure Login
+      uses: azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+    - name: Deploy to Azure Container Instance
+      run: |
+        az container create \
+          --resource-group CLOUDLAB-DEV-RG \
+          --name contacts-container \
+          --image cloudlabacr11103.azurecr.io/phonebook-app:latest \
+          --dns-name-label contacts-lab-${{ github.run_number }} \
+          --ports 80 \
+          --registry-login-server cloudlabacr11103.azurecr.io \
+          --registry-username ${{ secrets.ACR_USERNAME }} \
+          --registry-password ${{ secrets.ACR_PASSWORD }} \
+          --location westeurope \
+          --restart-policy OnFailure
+# minor change to trigger push
