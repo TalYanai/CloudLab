@@ -38,17 +38,19 @@ jobs:
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
 
+    - name: Debug ACI_NAME
+      run: echo "ACI_NAME is: ${{ secrets.ACI_NAME }}"
+
     - name: Deploy to Azure Container Instance
       run: |
-          az container create \
-            --name ${{ secrets.ACI_NAME }} \
-            --resource-group ${{ secrets.ACI_RG }} \
-            --image ${{ secrets.ACR_NAME }}.azurecr.io/phonebook-app:latest \
-            --registry-login-server ${{ secrets.ACR_NAME }}.azurecr.io \
-            --registry-username ${{ secrets.ACR_USERNAME }} \
-            --registry-password ${{ secrets.ACR_PASSWORD }} \
-            --location ${{ secrets.ACI_LOCATION }} \
-            --dns-name-label cloudlab-${{ github.run_number }} \
-            --ports 80 \
-            --os-type Linux
-     
+        az container create \
+          --name ${{ secrets.ACI_NAME }} \
+          --resource-group ${{ secrets.ACI_RG }} \
+          --image ${{ secrets.ACR_NAME }}.azurecr.io/phonebook-app:latest \
+          --registry-login-server ${{ secrets.ACR_NAME }}.azurecr.io \
+          --registry-username ${{ secrets.ACR_USERNAME }} \
+          --registry-password ${{ secrets.ACR_PASSWORD }} \
+          --location ${{ secrets.ACI_LOCATION }} \
+          --dns-name-label cloudlab-${{ github.run_number }} \
+          --ports 80 \
+          --os-type Linux
