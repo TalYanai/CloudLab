@@ -1,3 +1,6 @@
+# trigger redeploy - ignore
+# This workflow builds a Docker image for the Phonebook application, pushes it to Azure Container Registry (ACR),
+# and deploys it to Azure Container Instances (ACI). It is triggered on pushes to the main branch or manually.
 name: Build and Deploy to ACI
 
 on:
@@ -23,11 +26,11 @@ jobs:
 
       - name: Build the Docker image
         run: |
-          docker build -t ${{ secrets.ACR_NAME }}.azurecr.io/phonebook-app:latest ./Contacts
+          docker build -t ${{ secrets.ACR_NAME }}.azurecr.io/phonebook-app:latest ./Contacts          
 
       - name: Push the Docker image
         run: |
-          docker push ${{ secrets.ACR_NAME }}.azurecr.io/phonebook-app:latest
+          docker push ${{ secrets.ACR_NAME }}.azurecr.io/phonebook-app:latest  
 
   deploy-to-aci:
     needs: build-and-push
