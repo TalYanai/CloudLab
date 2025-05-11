@@ -39,9 +39,6 @@ jobs:
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
 
-      - name: Debug ACI_NAME
-        run: echo "ACI_NAME is ${{ secrets.ACI_NAME }}"
-
       - name: Deploy to Azure Container Instance
         run: |
           az container create \
