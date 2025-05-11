@@ -26,7 +26,7 @@ jobs:
 
       - name: Build the Docker image
         run: |
-          docker build -t ${{ secrets.ACR_NAME }}.azurecr.io/phonebook-app:latest ./Contacts          
+          docker build -t "${{ secrets.ACR_NAME }}.azurecr.io/phonebook-app:latest" ./Contacts
 
       - name: Push the Docker image
         run: |
