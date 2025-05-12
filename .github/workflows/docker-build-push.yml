@@ -52,5 +52,5 @@ jobs:
           --dns-name-label cloudlab-${{ github.run_number }} \
           --ports 80 \
           --os-type Linux     
-          --containers '[{"name":"phonebook-container","image":"cloudlabacr11103.azurecr.io/phonebook-app:latest","resources":{"requests":{"cpu":1,"memoryInGb":1.5}},"ports":[{"port":80}]}]'
+          --containers "[{\"name\":\"phonebook-container\",\"image\":\"cloudlabacr11103.azurecr.io/phonebook-app:latest\",\"resources\":{\"requests\":{\"cpu\":1,\"memoryInGb\":1.5}},\"ports\":[{\"port\":80}]}]"
 
