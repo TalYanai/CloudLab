@@ -39,18 +39,37 @@ jobs:
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
 
+    - name: Create container definition JSON
+      run: |
+        echo '[
+          {
+            "name": "phonebook-container",
+            "image": "cloudlabacr11103.azurecr.io/phonebook-app:latest",
+            "resources": {
+              "requests": {
+                "cpu": 1,
+                "memoryInGb": 1.5
+              }
+            },
+            "ports": [
+              {
+                "port": 80
+              }
+            ]
+          }
+        ]' > container-definition.json
+
     - name: Deploy to Azure Container Instance
       run: |
         az container create \
-          --name phonebook-container \
           --resource-group CLOUDLAB-DEV-RG \
+          --name phonebook-container \
           --image cloudlabacr11103.azurecr.io/phonebook-app:latest \
           --registry-login-server cloudlabacr11103.azurecr.io \
           --registry-username ${{ fromJson(secrets.AZURE_CREDENTIALS).clientId }} \
           --registry-password ${{ fromJson(secrets.AZURE_CREDENTIALS).clientSecret }} \
-          --location westeurope \
           --dns-name-label cloudlab-${{ github.run_number }} \
+          --location westeurope \
+          --os-type Linux \
           --ports 80 \
-          --os-type Linux     
-          --containers "[{\"name\":\"phonebook-container\",\"image\":\"cloudlabacr11103.azurecr.io/phonebook-app:latest\",\"resources\":{\"requests\":{\"cpu\":1,\"memoryInGb\":1.5}},\"ports\":[{\"port\":80}]}]"
-
+          --containers @container-definition.json
