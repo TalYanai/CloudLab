@@ -52,3 +52,5 @@ jobs:
           --dns-name-label cloudlab-${{ github.run_number }} \
           --ports 80 \
           --os-type Linux
+          --cpu 1 \
+          --memory 1.5 \
